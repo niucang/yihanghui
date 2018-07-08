@@ -1,0 +1,2 @@
+class Advertising < ApplicationRecord
+end

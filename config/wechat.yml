@@ -1,0 +1,17 @@
+default: &default
+  appid: "wxc1ebcf6664be945f"
+  secret: "6b4d62efddf508ccfd69fd28751b0d8a"
+  token: "b333b63d985de6"
+  access_token: "/var/tmp/wechat_access_token"
+  jsapi_ticket: "/var/tmp/wechat_jsapi_ticket"
+  encrypt_mode: true
+  encoding_aes_key:  "QidXCRLVNuvC2LxZVuwK6HerHWiczDospF43BRY70zK"
+
+production:
+  <<: *default
+development:
+  <<: *default
+  trusted_domain_fullname: "http://b7cd8905.ngrok.io/"
+
+test:
+  <<: *default

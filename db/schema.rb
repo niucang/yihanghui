@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180708132123) do
+ActiveRecord::Schema.define(version: 20180712130105) do
 
   create_table "advertisings", force: :cascade do |t|
     t.string "hyperlink"
@@ -20,11 +20,18 @@ ActiveRecord::Schema.define(version: 20180708132123) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "coupon_types", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "coupons", force: :cascade do |t|
     t.integer "gift_id"
     t.integer "from_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "coupon_type_id"
     t.index ["from_id"], name: "index_coupons_on_from_id"
     t.index ["gift_id"], name: "index_coupons_on_gift_id"
   end
@@ -45,6 +52,7 @@ ActiveRecord::Schema.define(version: 20180708132123) do
     t.string "mobile_phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "openid"
   end
 
 end

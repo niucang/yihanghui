@@ -1,0 +1,2 @@
+module GiftSharesHelper
+end

@@ -62,11 +62,22 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    http (3.3.0)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.0)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (2.1.1)
+    http_parser.rb (0.6.0)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -160,6 +171,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.14)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
     web-console (3.6.2)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -168,6 +182,11 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+    wechat (0.10.1)
+      activesupport (>= 3.2, <= 5.2)
+      http (>= 1.0.4, < 4)
+      nokogiri (>= 1.6.0)
+      thor
     xpath (3.1.0)
       nokogiri (~> 1.8)
 
@@ -191,6 +210,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  wechat
 
 BUNDLED WITH
    1.16.0

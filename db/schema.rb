@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180712130105) do
+ActiveRecord::Schema.define(version: 20180714061801) do
 
   create_table "advertisings", force: :cascade do |t|
     t.string "hyperlink"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 20180712130105) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "openid"
+    t.string "sex"
+    t.string "language"
+    t.string "city"
+    t.string "province"
+    t.string "headimgurl"
+    t.string "country"
+    t.boolean "admin", default: false
+    t.string "password_digest"
+    t.index ["openid"], name: "index_users_on_openid"
   end
 
 end

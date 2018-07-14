@@ -3,7 +3,7 @@ class WechatsController < ApplicationController
   wechat_api
   wechat_responder
   def index
-    wechat_oauth2('snsapi_base') do |openid|
+    wechat_oauth2 do |openid|
     end
   end
 end

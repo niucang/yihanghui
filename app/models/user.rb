@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_one :gift
   has_many :coupons, through: :gift
   has_secure_password
+  validates :mobile_phone, presence: true
 
   def gift
     Gift.find_or_create_by(user_id: self.id)

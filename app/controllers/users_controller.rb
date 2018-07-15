@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authentication, only: [:auth_user, :auth_user_callback]
+  skip_before_action :authentication, only: [:auth_user]
   def auth_user
     wechat_oauth2('snsapi_userinfo') do |openid, other_params|
       user = User.find_by_openid(openid)
@@ -23,10 +23,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def auth_user_callback
-    p "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code"
-    p ENV['appid']
-    p ENV['secret']
-    p web_access_token(params['code'])
+  def gift
+    @advertisings = Advertising.all
+    @coupons = current_user.gift.coupons
   end
 end

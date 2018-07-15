@@ -5,12 +5,12 @@ class ApplicationController < ActionController::Base
 
   def authentication
     if current_user.blank?
-      redirect_to users_auth_user_path callback_url: request.original_url
+      redirect_to auth_user_users_path callback_url: request.original_url
     end
   end
 
   def current_user
-    @current_user ||= User.find_by_id(session[:user_id])
+    @current_user ||= User.first #User.find_by_id(session[:user_id])
   end
 
   def login_user user

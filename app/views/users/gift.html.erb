@@ -1,0 +1,76 @@
+<div class="mui-container">
+  <div class="title mui--text-center">我的创业大礼包</div>
+  <div class="swiper-container swiper-container-horizontal">
+    <div class="swiper-wrapper">
+      <% @advertisings.each do |ad| %>
+        <div class='swiper-slide'>
+          <%= link_to ad.hyperlink do %>
+            <%= image_tag ad.img_url %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="desc">往下拉，关注下方公众号，在微信公众号解锁我的大礼包，随时随地接收新的创业服务券</div>
+  <div class="mui-divider"></div>
+  <div class="coupons">
+    <% @coupons.each do |cp| %>
+      <div class="card">
+        <div class="coupon">
+          <div class="content">
+            <div class="divider"></div>
+            <div class="center">
+              <div class="left">
+                創
+              </div>
+              <div class="right">
+                <div class="desc"><%= cp.coupon_type.title %></div>
+                <div class="price">免费券</div>
+              </div>
+            </div>
+            <div class="divider"></div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="share-link">
+    <a><button class="mui-btn mui-btn--danger">分享大礼包给好友</button></a>
+  </div>
+  <div class="coupon-usage">
+    <div class="title">
+      使用说明
+    </div>
+    <div class="qrcodes">
+      <div class="left">
+        <%= image_tag 'qrcode-left.png' %>
+      </div>
+      <div class="right">
+        <%= image_tag 'qrcode-right.png' %>
+      </div>
+    </div>
+    <div class="text">
+
+    </div>
+    <div class="text">
+      <%= image_tag 'coupon-desc.png' %>
+    </div>
+    <div class="footer">
+      <%= image_tag 'footer.png' %>
+    </div>
+  </div>
+
+</div>
+<script>
+  $(function(){
+    var swiper = new Swiper('.swiper-container', {
+      direction:"horizontal",
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+    if(<%= @advertisings.length %> == 1)
+      swiper.autoplay.stop()
+  })
+</script>

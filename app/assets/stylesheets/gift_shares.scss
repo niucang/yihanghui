@@ -1,3 +1,202 @@
 // Place all the styles related to the GiftShares controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.container{
+    text-align: center;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 15px 0px;
+    background-color: rgba(0,0,0,0.3);
+    height: 100%;
+    position: absolute;
+}
+.hongbao{
+    height: 450px;
+    background: #A5423A;
+    width: 300px;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+.topcontent{
+    height: 280px;
+    border: 1px solid #BD503A;
+    background-color: #BD503A;
+    border-radius: 10px 10px 50% 50% / 10px 10px 15% 15%;
+    box-shadow: 0px 4px 0px -1px rgba(0,0,0,0.2);
+}
+.avatar{
+    position: relative;
+}
+.avatar span{
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    font-size: 2em;
+}
+#close{
+    color: rgba(0,0,0,0.5);
+}
+.avatar img{
+    border: 1px solid #BD503A;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10%;
+    width: 50px;
+    height: 50px;
+}
+.topcontent h2{
+    margin-top: 15px ;
+    font-size: 16px;
+    margin-bottom: 0px;
+        color: #fffab5;
+}
+.text{
+    color: #fffab5;
+    font-size: 13px;
+
+}
+.description{
+    margin: 30px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fffab5;
+}
+#chai{
+    width: 100px;
+    height: 100px;
+    border: 1px solid #FFA73A;
+    background-color: #FFA73A;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    display: inline-block;
+    margin-top: -50px;
+    box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.2);
+}
+#chai span{
+    margin-top: 35px;
+    display: inline-block;
+    font-size: 40px;
+    color: #000000;
+}
+.rotate{
+    -webkit-animation: anim .6s infinite alternate;
+        -ms-animation: anim .6s infinite alternate;
+            animation: anim .6s infinite alternate;
+}
+@-webkit-keyframes anim {
+    from { -webkit-transform: rotateY(180deg); }
+    to { -webkit-transform: rotateY(360deg); }
+}
+@-ms-keyframes anim {
+    from { -ms-transform: rotateY(180deg); }
+    to { -ms-transform: rotateY(360deg); }
+}
+@keyframes anim {
+    from { transform: rotateY(180deg); }
+    to { transform: rotateY(360deg); }
+}
+.swiper-wrapper {
+  img {
+    width: 100%;
+  }
+}
+.card {
+  background-color: rgb(214, 214, 212);
+  margin: 5px 0;
+  height: 131px;
+  padding: 12px 29px;
+}
+.coupon {
+    /* 相对定位，方便让before和after伪元素绝对定位偏移 */
+    position: relative;
+    /* 把超出div的部分隐藏起来 */
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(24, 20, 18);
+    margin: auto;
+    .divider {
+      width: 100%;
+      height: 1px;
+      background-image: linear-gradient(to right, #ccc 0%, #ccc 78%, transparent 50%);
+      background-size: 19px 1px;
+      background-repeat: repeat-x;
+      margin: 10px 0;
+    }
+    .content {
+      color: white;
+      margin-left: 55px;
+      margin-right: 45px;
+      height: 80%;
+      .center {
+        height: 82%;
+        & > * {
+        }
+        .left {
+          float: left;
+          width: 24px;
+          border: 2px solid;
+          border-radius: 55px;
+          text-align: center;
+          margin: 31px 0;
+        }
+        .right {
+          height: 80%;
+          text-align: center;
+          .desc {
+            font-size: 18px;
+            margin-top: 5px;
+          }
+          .price {
+            font-size: 25px;
+            margin-top: 15px;
+          }
+        }
+      }
+
+      .right {
+        color: rgb(207, 14, 23);
+      }
+    }
+}
+
+.coupon:before, .coupon:after {
+    content: ' ';
+    width: 0;
+    height: 100%;
+    /* 绝对定位进行偏移 */
+    position: absolute;
+    top: 10px;
+}
+
+.coupon:before {
+    /* 圆点型的border */
+    border-right: 89px dotted white;
+    /* 偏移一个半径，让圆点的一半覆盖div */
+    left: -42px;
+    border-color: rgb(214, 214, 212);
+    top: 21px;
+}
+
+.coupon:after {
+    /* 圆点型的border */
+    border-left: 10px dotted white;
+    /* 偏移一个半径，让圆点的一半覆盖div */
+    right: -5px;
+    border-color: rgb(214, 214, 212);
+}
+.share-link {
+  text-align: center;
+}
+.coupon-usage {
+  img {
+    width: 100%;
+  }
+}

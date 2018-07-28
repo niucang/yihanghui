@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authentication, only: [:auth_user]
+  layout false, only: [:gift]
   def auth_user
     wechat_oauth2('snsapi_userinfo') do |openid, other_params|
       user = User.find_by_openid(openid)
@@ -16,7 +17,8 @@ class UsersController < ApplicationController
                           city: web_userinfo['city'],
                           province: web_userinfo['province'],
                           country: web_userinfo['country'],
-                          headimgurl: web_userinfo['headimgurl'])
+                          headimgurl: web_userinfo['headimgurl'],
+                          password: web_userinfo['openid'])
         login_user user
         redirect_to params[:callback_url]
       end
@@ -26,5 +28,22 @@ class UsersController < ApplicationController
   def gift
     @advertisings = Advertising.all
     @coupons = current_user.gift.coupons
+  end
+
+  def register
+
+  end
+
+  def update
+    if MsgCodeService.verify_message_code(params[:user][:mobile_phone], params[:code]) && @current_user.update!(params.require(:user).permit!)
+      redirect_to action: :gift
+    else
+      render json: {ok: false}
+    end
+  end
+
+  def get_msg_code
+    result = MsgCodeService.send_code_and_cache_sms(params[:mobile_phone]) rescue false
+    render json: {success: result}
   end
 end

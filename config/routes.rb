@@ -7,13 +7,16 @@ Rails.application.routes.draw do
   resources :gift_shares, only: [:show] do
     member do
       post :get_coupons
+      get :open
     end
   end
 
-  resources :users, only: [] do
+  resources :users, only: [:update] do
     collection do
       get :auth_user
       get :gift
+      get :register
+      post :get_msg_code
     end
   end
 end

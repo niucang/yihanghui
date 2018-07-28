@@ -1,0 +1,93 @@
+<div class="mui-container register">
+  <div class="title mb-2">
+    <div class="left">
+      加入
+    </div>
+    <div class="right">
+      <%= image_tag 'yihanghui.png', class: 'top'%>
+      <%= image_tag 'chuang.png', class: 'bottom'%>
+    </div>
+  </div>
+  <div class="pingtai mb-3">
+    无边界在线园区云孵化平台
+  </div>
+  <div class="zhuce mb-3">
+    真实注册 享用礼包
+  </div>
+  <%= form_for @current_user do |f| %>
+  <div class="form-group">
+    <div class="col-sm-5">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class='input-group-text no-padding-r'>
+              <%= image_tag 'person.png', size: '32x32'%>
+          </span>
+          <span class="split-line">
+          </span>
+        </div>
+        <%= f.text_field :name, class: 'form-control no-padding-l', placeholder: '请输入名字', required: true %>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class='input-group-text no-padding-r'>
+              <%= image_tag 'house.png', size: '32x32'%>
+          </span>
+          <span class="split-line">
+          </span>
+        </div>
+        <%= f.text_field :company, class: 'form-control no-padding-l', placeholder: '请输入公司名字' %>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class='input-group-text no-padding-r'>
+              <%= image_tag 'network.png', size: '32x32'%>
+          </span>
+          <span class="split-line">
+          </span>
+        </div>
+        <%= f.text_field :job, class: 'form-control no-padding-l', placeholder: '请输入职位' %>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class='input-group-text no-padding-r'>
+              <%= image_tag 'phone.png', size: '32x32'%>
+          </span>
+          <span class="split-line">
+          </span>
+        </div>
+        <%= f.number_field :mobile_phone, class: 'form-control no-padding-l', placeholder: '请输入手机号', required: true, id: 'phone' %>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class='input-group-text no-padding-r'>
+              <%= image_tag 'letter.png', size: '32x32'%>
+          </span>
+          <span class="split-line">
+          </span>
+        </div>
+        <%= text_field_tag :code, nil, class: 'form-control no-padding-r no-padding-l', placeholder: '请输入验证码', required: true %>
+        <span class="split-line shorter">
+        </span>
+        <div class="input-group-append">
+          <span class="input-group-text no-padding-l smaller" id="J_getCode" onclick="getCode(this)">获取验证码</span>
+          <span class="input-group-text no-padding-l smaller" id="J_resetCode" style="display: none;"><span id="J_second">60</span>秒后重发</span>
+        </div>
+      </div>
+    </div>
+    <%= f.button '登录', class: 'btn btn-info btn-block submit mb-3'%>
+    <div class="submit-text-info">
+      点击登录表示同意《
+      <span><%= link_to '软件许可及服务条款', '#' %></span>
+      》
+    </div>
+  </div>
+  <% end %>
+</div>

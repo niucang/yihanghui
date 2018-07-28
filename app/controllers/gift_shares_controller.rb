@@ -3,6 +3,10 @@ class GiftSharesController < ApplicationController
   def show
   end
 
+  def open
+    
+  end
+
   def get_coupons
     current_user.add_coupons_by_gift(@share_gift)
   end

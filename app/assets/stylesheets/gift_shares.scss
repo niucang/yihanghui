@@ -7,7 +7,6 @@
     max-width: 960px;
     margin: 0 auto;
     padding: 15px 0px;
-    background-color: rgba(0,0,0,0.3);
     height: 100%;
     position: absolute;
 }
@@ -110,29 +109,60 @@
 .card {
   background-color: rgb(214, 214, 212);
   margin: 5px 0;
-  height: 131px;
+  height: 125px;
   padding: 12px 29px;
+}
+.card {
+  .left-circle {
+    height: 100%;
+    width: 21%;
+    float: left;
+    background-color: rgb(24, 20, 18);
+    .circle {
+      position: relative;
+      width: 100%;
+      left: -29%;
+      top: 21%;
+      height: 60%;
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+      background-color: #d6d6d4;
+    }
+  }
+}
+.main-desc {
+  font-size:9px;
+  color:#333333;
+  letter-spacing:0;
+  text-align:center;
 }
 .coupon {
     /* 相对定位，方便让before和after伪元素绝对定位偏移 */
     position: relative;
     /* 把超出div的部分隐藏起来 */
     overflow: hidden;
-    width: 100%;
+    width: 79%;
     height: 100%;
     background-color: rgb(24, 20, 18);
     margin: auto;
     .divider {
-      width: 100%;
+      width: 80%;
       height: 1px;
       background-image: linear-gradient(to right, #ccc 0%, #ccc 78%, transparent 50%);
       background-size: 19px 1px;
       background-repeat: repeat-x;
       margin: 10px 0;
     }
+    .divider.top {
+      width: 106%;
+    }
+    .divider.bottom {
+      bottom: 0px;
+      position: absolute;
+    }
     .content {
       color: white;
-      margin-left: 55px;
+      margin-left: 9px;
       margin-right: 45px;
       height: 80%;
       .center {
@@ -166,37 +196,140 @@
       }
     }
 }
-
-.coupon:before, .coupon:after {
-    content: ' ';
-    width: 0;
-    height: 100%;
-    /* 绝对定位进行偏移 */
+.coupon {
+  background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 5px, rgb(24, 20, 18) 5px);
+  background-size: 15px 15px;
+  background-position: 9px 3px;
+  z-index: 0;
+  &:before {
+    background-color: rgb(24, 20, 18);
+    content: '';
     position: absolute;
-    top: 10px;
+    top: 0;
+    bottom: 0;
+    left: 0px;
+    right: 10px;
+    z-index: -1;
+  }
 }
+// .coupon:before, .coupon:after {
+//     content: ' ';
+//     width: 0;
+//     height: 100%;
+//     /* 绝对定位进行偏移 */
+//     position: absolute;
+//     top: 10px;
+// }
 
-.coupon:before {
-    /* 圆点型的border */
-    border-right: 89px dotted white;
-    /* 偏移一个半径，让圆点的一半覆盖div */
-    left: -42px;
-    border-color: rgb(214, 214, 212);
-    top: 21px;
-}
-
-.coupon:after {
-    /* 圆点型的border */
-    border-left: 10px dotted white;
-    /* 偏移一个半径，让圆点的一半覆盖div */
-    right: -5px;
-    border-color: rgb(214, 214, 212);
-}
+// .coupon:before {
+//     /* 圆点型的border */
+//     border-image-source: url('/dot-left.png');
+//     border-image-slice: 0px 0px 5px 0px;
+//     border-image-width: 1;
+//     border-image-outset: 0px 0px 0px 0px;
+//     border-image-repeat: repeat;
+//         /* 偏移一个半径，让圆点的一半覆盖div */
+//     left: -42px;
+//     border-color: rgb(214, 214, 212);
+//     top: 21px;
+// }
+//
+// .coupon:after {
+//     /* 圆点型的border */
+//     border-left: 10px dotted white;
+//     /* 偏移一个半径，让圆点的一半覆盖div */
+//     right: -5px;
+//     border-color: rgb(214, 214, 212);
+// }
 .share-link {
   text-align: center;
+}
+.mui-container {
+  .title.mui--text-center {
+    font-size:16px;
+    color:#333333;
+    letter-spacing:0;
+    text-align:center;
+    margin: 10px 0;
+
+  }
 }
 .coupon-usage {
   img {
     width: 100%;
+  }
+  .title {
+    font-size:18px;
+    color:#999999;
+    letter-spacing:0;
+    margin-bottom: 15px;
+  }
+  .qrcodes {
+    & > * {
+      display: inline-block;
+    }
+    .right {
+      float: right;
+    }
+    margin-bottom: 20px;
+  }
+}
+.mui-divider {
+  margin: 10px 0;
+}
+.footer {
+  margin: 10px auto 20px auto;
+  text-align: center;
+  img {
+    width: 40%;
+  }
+}
+.container {
+  .tl {
+    text-align: left;
+  }
+  .title {
+    background:#ffffff;
+    border-radius:5px;
+    padding: 0.625rem 2rem 0.5rem 2rem;
+    width: 96%;
+    margin-left: 2%;
+    .images {
+      .top {
+        img {
+          width: 28%;
+        }
+      }
+      .bottom {
+        img {
+          width: 28%;
+        }
+      }
+    }
+  }
+  .body img {
+    width: 100%;
+  }
+  .footer {
+    .line {
+      margin-bottom: 0.8rem;
+      &.fenxiang {
+        font-size:18px;
+        color:#333333;
+        letter-spacing:0;
+      }
+      &.tip {
+        font-size:14px;
+        color:#999999;
+        letter-spacing:0;
+      }
+    }
+    .btn {
+      width: 52%;
+      margin-left: 24%;
+      font-size: 18px;
+      background: #ff3a3a;
+      border-color: #ff3a3a;
+    }
   }
 }

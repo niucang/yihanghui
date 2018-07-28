@@ -1,0 +1,97 @@
+@import "bootstrap";
+
+.register{
+  .title, .pingtai, .zhuce {
+    text-align: center;
+  }
+  .pingtai {
+    font-size:18px;
+    color:#333333;
+    letter-spacing:0;  }
+  .title {
+    padding-right: 2rem;
+    & > * {
+      display: inline-block;
+    }
+    .left {
+      width: 48%;
+      text-align: right;
+      font-size:24px;
+      color:#333333;
+      letter-spacing:0;
+      text-align: right;
+      padding-right: 1rem;
+      position: relative;
+      bottom: 2rem;
+    }
+    .right {
+      width: 50%;
+      text-align: left;
+      margin-top: 1.5rem;
+      .top {
+        width: 49%;
+        margin-bottom: 5px;
+      }
+      .bottom {
+        width: 57%;
+      }
+    }
+  }
+  form {
+    .input-group {
+      border-radius:5px;
+      .input-group-text {
+        background-color: #FFF;
+      }
+      .no-padding-r {
+        border-right: 0;
+      }
+      .no-padding-l {
+        border-left: 0;
+      }
+      .split-line {
+        width: 1px;
+        z-index: 1;
+        position: relative;
+        border-top: 1px solid rgb(206, 212, 218);
+        border-bottom: 1px solid rgb(206, 212, 218);
+        background-color: white;
+        &:after {
+          background-color: rgb(206, 212, 218);
+          content: '';
+          display: block;
+          position: absolute;
+          top: 8px;
+          left: 0px;
+          right: 0px;
+          bottom: 8px;
+          z-index: -1;
+        }
+        &.shorter {
+          &:after {
+            top: 12px;
+            bottom: 12px;
+          }
+        }
+      }
+      .input-group-text.smaller {
+        font-size: 14px;
+      }
+    }
+    .submit {
+      width: 50%;
+      margin-left: 25%;
+      background: #666666;
+      border-color: #666666;
+    }
+    .submit-text-info {
+      font-size:14px;
+      color:#999999!important;
+      letter-spacing:0;
+      text-align:center;
+      a {
+        color:#999999!important;
+      }
+    }
+  }
+}

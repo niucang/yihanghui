@@ -4,7 +4,7 @@ class GiftSharesController < ApplicationController
   end
 
   def open
-    
+
   end
 
   def get_coupons
@@ -14,5 +14,6 @@ class GiftSharesController < ApplicationController
   private
     def set_gift_share
       @share_gift ||= Gift.where(id: params[:id]).where.not(shared_at: nil).first
+      raise ActiveRecord::RecordNotFound if @share_gift.blank?
     end
 end

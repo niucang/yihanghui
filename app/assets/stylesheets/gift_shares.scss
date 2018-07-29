@@ -11,9 +11,9 @@
     position: absolute;
 }
 .hongbao{
-    height: 450px;
+    height: 420px;
     background: #A5423A;
-    width: 300px;
+    width: 315px;
     left: 0;
     top: 0;
     border-radius: 10px;
@@ -46,8 +46,8 @@
     border-radius: 10px;
     overflow: hidden;
     margin-top: 10%;
-    width: 50px;
-    height: 50px;
+    width: 85px;
+    height: 85px;
 }
 .topcontent h2{
     margin-top: 15px ;
@@ -323,6 +323,9 @@
         color:#999999;
         letter-spacing:0;
       }
+      &.last {
+        margin-bottom: 0.5rem;
+      }
     }
     .btn {
       width: 52%;
@@ -330,6 +333,59 @@
       font-size: 18px;
       background: #ff3a3a;
       border-color: #ff3a3a;
+    }
+  }
+}
+.gift_share {
+  &.container {
+    padding-top: 5rem;
+  }
+  .hongbao {
+    background:#ff3a3a;
+    border-radius:30px;
+    img.img-circle {
+      border-radius: 5rem;
+      margin-top: 14%;
+    }
+    .user-name {
+      font-size:14px;
+      color:#ffffff;
+      letter-spacing:0;
+      text-align:center;
+      margin-bottom: 1rem;
+    }
+    .text {
+      font-size:18px;
+      color:#333333;
+      letter-spacing:0;
+    }
+
+    .open-hongbao {
+      width: 75px;
+      height: 75px;
+      background-color: #ffe47d;
+      border-radius: 50%;
+      margin-left: 38%;
+      margin-top: 25%;
+    }
+    .kai {
+      width: 67px;
+      height: 67px;
+      border-radius: 50%;
+      background-color: #ffe47d;
+      position: relative;
+      top: 4px;
+      left: 4px;
+      border: 2px solid white;
+      font-size:36px;
+      color:#333333;
+      letter-spacing:0;
+      padding-top: 3px;
+    }
+  }
+  a {
+    &:hover, &:focus {
+      text-decoration: none;
     }
   }
 }

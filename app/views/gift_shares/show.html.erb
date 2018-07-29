@@ -1,4 +1,4 @@
-<div class="container" id="container">
+<!-- <div class="container" id="container">
     <div class="hongbao">
         <div class="topcontent">
             <div class="avatar">
@@ -26,6 +26,37 @@
     }
     oClose.onclick = function (){
         oContainer.style.display = "none";
+    }
+  });
+</script> -->
+<div class="gift_share container">
+  <div class="hongbao">
+    <div class="avatar">
+      <%= image_tag @share_gift.user.favicon, class: "img-circle mb-2" %>
+    </div>
+    <div class="user-name mb-4">
+      <%= @share_gift.user.name %>
+    </div>
+    <div class="text">给您发来了一个大礼包</div>
+    <%= link_to '#' do %>
+    <div class="open-hongbao" id='chai-hongbao'>
+      <div class="kai">開</div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var oChai = document.getElementById("chai-hongbao");
+
+    oChai.onclick = function (e){
+        e.preventDefault()
+        $(oChai).addClass('rotate')
+        setTimeout(function(){
+          current_href = location.href.split('/')
+          current_id = current_href[current_href.length - 1]
+          window.location.href = "/gift_shares/" + current_id + "/open"
+        }, 300)
     }
   });
 </script>

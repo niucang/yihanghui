@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/swiper.min.css">
     <%= stylesheet_link_tag    'gift', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src='http://res.wx.qq.com/open/js/jweixin-1.2.0.js'></script>
+    <%= wechat_config_js debug: false, api: %w(onMenuShareTimeline onMenuShareAppMessage hideMenuItems) %>
     <script src="/swiper.min.js"></script>
   </head>
 
@@ -93,6 +95,9 @@
     if(<%= @advertisings.length %> == 1)
       swiper.autoplay.stop()
   })
+  wx.ready(function() {
+      wx.hideOptionMenu();
+  });
 </script>
 </body>
 </html>

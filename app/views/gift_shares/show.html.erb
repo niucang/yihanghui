@@ -55,7 +55,7 @@
         setTimeout(function(){
           current_href = location.href.split('/')
           current_id = current_href[current_href.length - 1]
-          window.location.href = "/gift_shares/" + current_id + "/open"
+          window.location.href = "<%= open_gift_share_path(@share_gift) %>"
         }, 300)
     }
   });

@@ -74,6 +74,7 @@
           </span>
         </div>
         <%= text_field_tag :code, nil, class: 'form-control no-padding-r no-padding-l', placeholder: '请输入验证码', required: true %>
+        <%= hidden_field_tag 'gift', params[:gift] %>
         <span class="split-line shorter">
         </span>
         <div class="input-group-append">

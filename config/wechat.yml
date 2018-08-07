@@ -11,7 +11,7 @@ production:
   <<: *default
 development:
   <<: *default
-  trusted_domain_fullname: "http://niucang.s1.natapp.cc/"
+  trusted_domain_fullname: "http://niucang.s1.natapp.cc"
 
 test:
   <<: *default

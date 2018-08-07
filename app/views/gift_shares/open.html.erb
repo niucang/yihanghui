@@ -17,8 +17,37 @@
   </div>
   <div class="footer">
     <div class="line fenxiang">与好友分享创业大礼包</div>
-    <%= link_to '一键分享', '#', class: 'btn btn-info btn-block mb-2' %>
+    <%= button_tag '一键分享', class: 'btn btn-info btn-block mb-2 share-button' %>
     <div class="line last">发至朋友圈或微信群</div>
     <div class="line tip">还差一步 先分享吧</div>
   </div>
 </div>
+<div class="mask"><%= image_tag 'sharesign.png'%></div>
+<script>
+function success_callback(){
+  setTimeout(function(){
+    $.get("<%= get_coupons_gift_share_url(@share_gift.id) %>", function(){
+      $('.mask').hide().delay(500)
+    })
+  }, 200)
+}
+$('.share-button').click(function(){
+  $('.mask').show().delay(500)
+})
+wx.ready(function() {
+    wx.onMenuShareTimeline({
+      title: "<%= @current_user.name %>给你送了一个创业大礼包!",
+      desc: "无边界在线园区云孵化平台",
+      link: "<%= gift_share_url(@share_gift.id) %>",
+      imgUrl: 'http://cdn.puhuishequ.cn/photo/2018/64b97423-cd47-413e-8c76-fbb24ce439fa.png?imageView2/1/w/1920',
+      success: success_callback
+    });
+    wx.onMenuShareAppMessage({
+      title: "<%= @current_user.name %>给你送了一个创业大礼包", // 分享标题
+      desc: '无边界在线园区云孵化平台', // 分享描述
+      link: "<%= gift_share_url(@share_gift.id) %>", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+      imgUrl: 'http://cdn.puhuishequ.cn/photo/2018/64b97423-cd47-413e-8c76-fbb24ce439fa.png?imageView2/1/w/1920', // 分享图标
+      success: success_callback
+  });
+});
+</script>

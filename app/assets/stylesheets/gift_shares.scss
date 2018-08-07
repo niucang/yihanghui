@@ -389,3 +389,30 @@
     }
   }
 }
+.mask {
+  display: none;
+  margin: auto;
+  padding-right: 1.2rem;
+  max-width: 768px;
+  text-align: right;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(0,0,0,.65);
+  z-index: 10;
+  img {
+    width: 81%;
+    -webkit-pointer-events: none;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+}

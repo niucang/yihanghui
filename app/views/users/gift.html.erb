@@ -11,7 +11,7 @@
     <%= stylesheet_link_tag    'gift', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src='http://res.wx.qq.com/open/js/jweixin-1.2.0.js'></script>
-    <%= wechat_config_js debug: false, api: %w(onMenuShareTimeline onMenuShareAppMessage hideMenuItems) %>
+    <%= wechat_config_js debug: false, api: %w(onMenuShareTimeline onMenuShareAppMessage) %>
     <script src="/swiper.min.js"></script>
   </head>
 
@@ -57,7 +57,7 @@
   </div>
   <div class="mui-divider"></div>
   <div class="share-link">
-    <a><button class="mui-btn mui-btn--danger">分享大礼包给好友</button></a>
+    <a><button class="mui-btn mui-btn--danger share-button">分享大礼包给好友</button></a>
   </div>
   <div class="coupon-usage">
     <div class="title">
@@ -83,6 +83,7 @@
   </div>
 
 </div>
+<div class="mask"><%= image_tag 'sharesign.png'%></div>
 <script>
   $(function(){
     var swiper = new Swiper('.swiper-container', {
@@ -95,8 +96,29 @@
     if(<%= @advertisings.length %> == 1)
       swiper.autoplay.stop()
   })
+  function success_callback(){
+    $.get("<%= share_gift_share_url(@gift.id) %>", function(){
+      $('.mask').hide().delay(500)      
+    })
+  }
+  $('.share-button').click(function(){
+    $('.mask').show().delay(500)
+  })
   wx.ready(function() {
-      wx.hideOptionMenu();
+      wx.onMenuShareTimeline({
+        title: "<%= @current_user.name %>给你送了一个创业大礼包!",
+        desc: "无边界在线园区云孵化平台",
+        link: "<%= gift_share_url(@gift.id) %>",
+        imgUrl: 'http://cdn.puhuishequ.cn/photo/2018/64b97423-cd47-413e-8c76-fbb24ce439fa.png?imageView2/1/w/1920',
+        success: success_callback
+      });
+      wx.onMenuShareAppMessage({
+        title: "<%= @current_user.name %>给你送了一个创业大礼包", // 分享标题
+        desc: '无边界在线园区云孵化平台', // 分享描述
+        link: "<%= gift_share_url(@gift.id) %>", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'http://cdn.puhuishequ.cn/photo/2018/64b97423-cd47-413e-8c76-fbb24ce439fa.png?imageView2/1/w/1920', // 分享图标
+        success: success_callback
+      });
   });
 </script>
 </body>

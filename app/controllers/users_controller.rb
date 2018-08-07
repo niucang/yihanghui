@@ -6,6 +6,7 @@ class UsersController < ApplicationController
       user = User.find_by_openid(openid)
       if user
         login_user user
+
       else
         web_userinfo = Wechat.api.web_userinfo(other_params['access_token'], openid)
         user = User.create(openid: web_userinfo['openid'],
@@ -20,23 +21,23 @@ class UsersController < ApplicationController
                           headimgurl: web_userinfo['headimgurl'],
                           password: web_userinfo['openid'])
         login_user user
-        redirect_to params[:callback_url]
       end
+      redirect_to params[:callback_url]
     end
   end
 
   def gift
     @advertisings = Advertising.all
-    @coupons = current_user.gift.coupons
+    @gift = current_user.gift
+    @coupons = @gift.coupons
   end
 
   def register
-
   end
 
   def update
     if MsgCodeService.verify_message_code(params[:user][:mobile_phone], params[:code]) && @current_user.update!(params.require(:user).permit!)
-      redirect_to action: :gift
+      redirect_to get_coupons_gift_share_path(params[:gift])
     else
       render json: {ok: false}
     end

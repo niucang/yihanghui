@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   resources :gift_shares, only: [:show] do
     member do
-      post :get_coupons
+      get :get_coupons
       get :open
+      get :share
     end
   end
 

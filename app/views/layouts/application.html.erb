@@ -11,16 +11,11 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src='http://res.wx.qq.com/open/js/jweixin-1.2.0.js'></script>
-    <%= wechat_config_js debug: false, api: %w(onMenuShareTimeline onMenuShareAppMessage hideMenuItems) -%>
+    <%= wechat_config_js debug: false, api: %w(onMenuShareTimeline onMenuShareAppMessage) -%>
     <script src="/swiper.min.js"></script>
   </head>
 
   <body>
     <%= yield %>
-    <script type="application/javascript">
-      wx.ready(function() {
-          wx.hideOptionMenu();
-      });
-    </script>
   </body>
 </html>

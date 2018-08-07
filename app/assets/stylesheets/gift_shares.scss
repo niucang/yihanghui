@@ -289,9 +289,8 @@
     text-align: left;
   }
   .title {
-    background:#ffffff;
     border-radius:5px;
-    padding: 0.625rem 2rem 0.5rem 2rem;
+    padding: 0.625rem 1.5rem 0.5rem 1.5rem;
     width: 96%;
     margin-left: 2%;
     .images {
@@ -301,8 +300,12 @@
         }
       }
       .bottom {
-        img {
-          width: 28%;
+        img.right {
+          width: 23%;
+        }
+        img.left {
+          width: 45%;
+          vertical-align: bottom;
         }
       }
     }
@@ -415,4 +418,8 @@
     font: inherit;
     vertical-align: baseline;
   }
+}
+.coupons {
+  max-height: 400px;
+  overflow-y: auto;
 }

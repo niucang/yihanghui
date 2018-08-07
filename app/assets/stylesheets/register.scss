@@ -10,8 +10,15 @@
     letter-spacing:0;  }
   .title {
     padding-right: 2rem;
+    font-size:24px;
+    color:#333333;
     & > * {
       display: inline-block;
+    }
+    img {
+      width: 35%;
+      margin-left: 5%;
+      margin-top: 3%;
     }
     .left {
       width: 48%;

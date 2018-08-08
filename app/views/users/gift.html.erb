@@ -13,6 +13,7 @@
     <script src='http://res.wx.qq.com/open/js/jweixin-1.2.0.js'></script>
     <%= wechat_config_js debug: false, api: %w(onMenuShareTimeline onMenuShareAppMessage) %>
     <script src="/swiper.min.js"></script>
+    <script src="/mui.min.js"></script>
   </head>
 
   <body>
@@ -84,6 +85,18 @@
 
 </div>
 <div class="mask"><%= image_tag 'sharesign.png'%></div>
+<style media="screen">
+  .modal {
+    padding-top: 10px;
+  }
+  .modal img {
+    width: 60%;
+    margin-left: 20%;
+  }
+  .modal p {
+    text-align: center;
+  }
+</style>
 <script>
   $(function(){
     var swiper = new Swiper('.swiper-container', {
@@ -95,10 +108,37 @@
     });
     if(<%= @advertisings.length %> == 1)
       swiper.autoplay.stop()
+    function activateModal(image) {
+      // initialize modal element
+      var modalEl = document.createElement('div');
+      modalEl.classList = "modal"
+      modalEl.style.width = '100%';
+      modalEl.style.margin = '34% auto';
+      modalEl.style.backgroundColor = '#fff';
+      $(modalEl).append('<p>快关注公众号后使用优惠券吧^_^</p><img src=' + image + '>')
+      // show modal
+      mui.overlay('on', modalEl);
+    }
+    var interval = setInterval(function(){
+      if($('.modal').is(":visible")){
+        return
+      }
+      $.get('/users/subscribe_info', function(data){
+        if(data.is_subscribe){
+          clearInterval(interval)
+        }else{
+          if($('.modal').is(":visible"))
+            return
+          $.get('/users/subscribe_image', function(data){
+            activateModal(data.image)
+          })
+        }
+      })
+    }, 5000)
   })
   function success_callback(){
     $.get("<%= share_gift_share_url(@gift.id) %>", function(){
-      $('.mask').hide().delay(500)      
+      $('.mask').hide().delay(500)
     })
   }
   $('.share-button').click(function(){

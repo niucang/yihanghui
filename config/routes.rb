@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       get :gift
       get :register
       post :get_msg_code
+      get :subscribe_info
+      get :subscribe_image
     end
   end
 end

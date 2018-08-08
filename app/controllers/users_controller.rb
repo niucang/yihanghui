@@ -47,4 +47,15 @@ class UsersController < ApplicationController
     result = MsgCodeService.send_code_and_cache_sms(params[:mobile_phone]) rescue false
     render json: {success: result}
   end
+
+  def subscribe_info
+    userinfo = Wechat.api.user(@current_user.openid)
+    is_subscribe = userinfo['subscribe'] == 1
+    render json: {is_subscribe: is_subscribe, }
+  end
+
+  def subscribe_image
+    qrcode_image = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=#{Wechat.api.qrcode_create_scene(Time.now.to_i, 2592000)['ticket']}"
+    render json: {image: qrcode_image}
+  end
 end

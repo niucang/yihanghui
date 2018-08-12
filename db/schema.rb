@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180714061801) do
+ActiveRecord::Schema.define(version: 20180812071857) do
 
   create_table "advertisings", force: :cascade do |t|
     t.string "hyperlink"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20180714061801) do
     t.datetime "shared_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
     t.index ["user_id"], name: "index_gifts_on_user_id"
   end
 

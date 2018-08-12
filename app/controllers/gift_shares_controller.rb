@@ -19,7 +19,6 @@ class GiftSharesController < ApplicationController
 
   private
     def set_gift_share
-      @share_gift ||= Gift.where(id: params[:id]).first
-      raise ActiveRecord::RecordNotFound if @share_gift.blank?
+      @share_gift ||= GiftGroup.find(params[:id])
     end
 end

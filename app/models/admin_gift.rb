@@ -1,0 +1,2 @@
+class AdminGift < CouponGroup
+end

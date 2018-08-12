@@ -1,0 +1,5 @@
+<h1>发送优惠券</h1>
+<%= form_tag '/admin/send_coupon', method: :post do %>
+  <%= collection_check_boxes(:coupon_types, :ids, @coupon_types, :id, :title) %>
+  <%= submit_tag "发送"%>
+<% end %>

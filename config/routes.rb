@@ -23,3 +23,9 @@ Rails.application.routes.draw do
     end
   end
 end
+RailsAdmin::Engine.routes.draw do
+  resource :show_coupon, only: [:show]
+  resource :send_coupon, only: [] do
+    post :show, on: :collection
+  end
+end

@@ -1,0 +1,2 @@
+module RailsAdmin::SendCouponHelper
+end

@@ -24,8 +24,9 @@ RailsAdmin.config do |config|
   # config.show_gravatar = true
   config.authenticate_with do
     authenticate_or_request_with_http_basic('请先登录') do |username, password|
-      user = User.where(name: username).first
-      user.authenticate(password) if user
+      user = User.where(name: username, admin: true).first
+      user.authenticate(password)
+      @current_admin_user = user
     end
   end
 

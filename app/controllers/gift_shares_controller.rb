@@ -19,6 +19,6 @@ class GiftSharesController < ApplicationController
 
   private
     def set_gift_share
-      @share_gift ||= GiftGroup.find(params[:id])
+      @share_gift ||= CouponGroup.find(params[:id])
     end
 end

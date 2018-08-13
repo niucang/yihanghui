@@ -26,9 +26,10 @@
 <script>
 function success_callback(){
   setTimeout(function(){
-    $.get("<%= get_coupons_gift_share_url(@share_gift.id) %>", function(){
-      $('.mask').hide().delay(500)
-    })
+    // $.get("<%= get_coupons_gift_share_url(@share_gift.id) %>", function(){
+    //   $('.mask').hide().delay(500)
+    // })
+    window.location.href = "<%= get_coupons_gift_share_url(@share_gift.id) %>"
   }, 200)
 }
 $('.share-button').click(function(){

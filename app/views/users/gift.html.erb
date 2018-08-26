@@ -30,7 +30,7 @@
       <% end %>
     </div>
   </div>
-  <div class="main-desc">往下拉，关注下方公众号，在微信公众号解锁我的大礼包，随时随地接收新的创业服务券</div>
+  <div class="main-desc">往下拉，关注下方公众号，在微信公众号获取更多创业资讯！</div>
   <div class="mui-divider"></div>
   <div class="coupons">
     <% @coupons.each do |cp| %>
@@ -66,7 +66,7 @@
     </div>
     <div class="qrcodes">
       <div class="left">
-        <%= image_tag 'qrcode-left.png' %>
+        <%= image_tag 'qrcode-left.jpg' %>
       </div>
       <div class="right">
         <%= image_tag 'qrcode-right.png' %>
@@ -80,6 +80,7 @@
     </div>
     <div class="footer">
       <%= image_tag 'footer.png' %>
+      <p style='color: gray;'>只之互动提供技术支持</p>
     </div>
   </div>
 
@@ -90,8 +91,7 @@
     padding-top: 10px;
   }
   .modal img {
-    width: 60%;
-    margin-left: 20%;
+    width: 100%;
   }
   .modal p {
     text-align: center;
@@ -112,10 +112,11 @@
       // initialize modal element
       var modalEl = document.createElement('div');
       modalEl.classList = "modal"
-      modalEl.style.width = '100%';
-      modalEl.style.margin = '34% auto';
+      modalEl.style.width = '84%';
+      modalEl.style.margin = '7% auto';
       modalEl.style.backgroundColor = '#fff';
-      $(modalEl).append('<p>快关注公众号后使用优惠券吧^_^</p><img src=' + image + '>')
+      // $(modalEl).append('<p>快关注公众号后使用优惠券吧^_^</p><img src=' + image + '>')
+      $(modalEl).append('<img src="/lock-page.png">')
       // show modal
       mui.overlay('on', modalEl);
     }
@@ -124,7 +125,7 @@
         return
       }
       $.get('/users/subscribe_info', function(data){
-        if(data.is_subscribe){
+        if(false && data.is_subscribe){
           clearInterval(interval)
         }else{
           if($('.modal').is(":visible"))

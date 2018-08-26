@@ -266,12 +266,18 @@
   }
   .qrcodes {
     & > * {
-      display: inline-block;
+      display: initial;
     }
     .right {
       float: right;
+      img {
+        width: 100%;
+      }
     }
     margin-bottom: 20px;
+    img {
+      width: 38%;
+    }
   }
 }
 .mui-divider {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180812071857) do
+ActiveRecord::Schema.define(version: 20180826051733) do
 
   create_table "advertisings", force: :cascade do |t|
     t.string "hyperlink"
@@ -63,6 +63,25 @@ ActiveRecord::Schema.define(version: 20180812071857) do
     t.boolean "admin", default: false
     t.string "password_digest"
     t.index ["openid"], name: "index_users_on_openid"
+  end
+
+  create_table "wechat_configs", force: :cascade do |t|
+    t.string "environment", default: "development", null: false
+    t.string "account", null: false
+    t.boolean "enabled", default: true
+    t.string "appid"
+    t.string "secret"
+    t.boolean "encrypt_mode"
+    t.string "encoding_aes_key"
+    t.string "token", null: false
+    t.string "access_token", null: false
+    t.string "jsapi_ticket", null: false
+    t.boolean "skip_verify_ssl", default: true
+    t.integer "timeout", default: 20
+    t.string "trusted_domain_fullname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["environment", "account"], name: "index_wechat_configs_on_environment_and_account", unique: true
   end
 
 end

@@ -2,11 +2,10 @@ class UsersController < ApplicationController
   skip_before_action :authentication, only: [:auth_user]
   layout false, only: [:gift]
   def auth_user
-    wechat_oauth2('snsapi_userinfo') do |openid, other_params|
+    wechat_oauth2('snsapi_userinfo', nil, :yihanghui) do |openid, other_params|
       user = User.find_by_openid(openid)
       if user
         login_user user
-
       else
         web_userinfo = Wechat.api.web_userinfo(other_params['access_token'], openid)
         user = User.create(openid: web_userinfo['openid'],

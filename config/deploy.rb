@@ -15,7 +15,7 @@ set :domain, '47.100.48.15'
 set :deploy_to, '/home/server/yihanghui'
 set :repository, 'https://github.com/niucang/yihanghui.git'
 set :branch, 'master'
-set :rvm_path, '/usr/local/rvm/scripts/rvm'
+set :rvm_use_path, '/usr/local/rvm/scripts/rvm'
 # Optional settings:
 set :user, 'root'          # Username in the server to SSH to.
 #   set :port, '30000'           # SSH port number.

@@ -12,7 +12,7 @@ class GiftSharesController < ApplicationController
   end
 
   def get_coupons
-    return render js: "window.location.href='#{register_users_path(gift: @share_gift.id)}'" if current_user.mobile_phone.blank?
+    # return render js: "window.location.href='#{register_users_path(gift: @share_gift.id)}'" if current_user.mobile_phone.blank?
     current_user.add_coupons_by_gift(@share_gift)
     redirect_to gift_users_path
   end

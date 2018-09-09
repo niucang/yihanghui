@@ -125,7 +125,7 @@
         return
       }
       $.get('/users/subscribe_info', function(data){
-        if(false && data.is_subscribe){
+        if(data.is_subscribe){
           clearInterval(interval)
         }else{
           if($('.modal').is(":visible"))

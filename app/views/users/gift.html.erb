@@ -108,34 +108,34 @@
     });
     if(<%= @advertisings.length %> == 1)
       swiper.autoplay.stop()
-    function activateModal(image) {
-      // initialize modal element
-      var modalEl = document.createElement('div');
-      modalEl.classList = "modal"
-      modalEl.style.width = '84%';
-      modalEl.style.margin = '7% auto';
-      modalEl.style.backgroundColor = '#fff';
-      // $(modalEl).append('<p>快关注公众号后使用优惠券吧^_^</p><img src=' + image + '>')
-      $(modalEl).append('<img src="/lock-page.png">')
-      // show modal
-      mui.overlay('on', modalEl);
-    }
-    var interval = setInterval(function(){
-      if($('.modal').is(":visible")){
-        return
-      }
-      $.get('/users/subscribe_info', function(data){
-        if(data.is_subscribe){
-          clearInterval(interval)
-        }else{
-          if($('.modal').is(":visible"))
-            return
-          $.get('/users/subscribe_image', function(data){
-            activateModal(data.image)
-          })
-        }
-      })
-    }, 5000)
+    // function activateModal(image) {
+    //   // initialize modal element
+    //   var modalEl = document.createElement('div');
+    //   modalEl.classList = "modal"
+    //   modalEl.style.width = '84%';
+    //   modalEl.style.margin = '7% auto';
+    //   modalEl.style.backgroundColor = '#fff';
+    //   // $(modalEl).append('<p>快关注公众号后使用优惠券吧^_^</p><img src=' + image + '>')
+    //   $(modalEl).append('<img src="/lock-page.png">')
+    //   // show modal
+    //   mui.overlay('on', modalEl);
+    // }
+    // var interval = setInterval(function(){
+    //   if($('.modal').is(":visible")){
+    //     return
+    //   }
+    //   $.get('/users/subscribe_info', function(data){
+    //     if(data.is_subscribe){
+    //       clearInterval(interval)
+    //     }else{
+    //       if($('.modal').is(":visible"))
+    //         return
+    //       $.get('/users/subscribe_image', function(data){
+    //         activateModal(data.image)
+    //       })
+    //     }
+    //   })
+    // }, 5000)
   })
   function success_callback(){
     $.get("<%= share_gift_share_url(@gift.id) %>", function(){

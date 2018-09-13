@@ -7,4 +7,8 @@ class WechatsController < ApplicationController
     wechat_oauth2 do |openid|
     end
   end
+
+  on :scan, with: 'scene_id' do |request, ticket|
+    request.reply.text "Subscribe user #{request.to_json} Ticket #{ticket}"
+  end
 end

@@ -53,6 +53,11 @@ class UsersController < ApplicationController
     render json: {is_subscribe: is_subscribe, }
   end
 
+  def share_info
+    gift = current_user.gift
+    render json: {is_share: gift.shared_at.present? }
+  end
+
   def subscribe_image
     qrcode_image = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=#{Wechat.api.qrcode_create_scene(params[:id], 2592000)['ticket']}"
     render json: {image: qrcode_image}

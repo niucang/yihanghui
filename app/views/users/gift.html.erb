@@ -120,22 +120,20 @@
     //   // show modal
     //   mui.overlay('on', modalEl);
     // }
-    // var interval = setInterval(function(){
-    //   if($('.modal').is(":visible")){
-    //     return
-    //   }
-    //   $.get('/users/subscribe_info', function(data){
-    //     if(data.is_subscribe){
-    //       clearInterval(interval)
-    //     }else{
-    //       if($('.modal').is(":visible"))
-    //         return
-    //       $.get('/users/subscribe_image', function(data){
-    //         activateModal(data.image)
-    //       })
-    //     }
-    //   })
-    // }, 5000)
+    var interval = setInterval(function(){
+      if($('.modal').is(":visible")){
+        return
+      }
+      $.get('/users/share_info', function(data){
+        if(data.is_share){
+          clearInterval(interval)
+        }else{
+          if($('.mask').is(":visible"))
+            return
+          $('.mask').show().delay(500)
+        }
+      })
+    }, 5000)
   })
   function success_callback(){
     $.get("<%= share_gift_share_url(@gift.id) %>", function(){

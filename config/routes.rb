@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get :register
       post :get_msg_code
       get :subscribe_info
+      get :share_info
       get :subscribe_image
     end
   end

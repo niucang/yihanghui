@@ -11,8 +11,9 @@ class WechatsController < ApplicationController
   on :scan, with: 'subscribe' do |request, ticket|
     request.reply.text "Subscribe user #{request.to_json} Ticket #{ticket}"
   end
-  on :event, with: 'scan' do |request, content|
-    puts request, content
+  on :scan, with: 'scene_id' do |request, content|
+    Rails.logger.info request
+    Rails.logger.info content
     request.reply.text "event scan got EventKey #{request.to_json}"
   end
 end

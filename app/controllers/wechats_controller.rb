@@ -8,11 +8,11 @@ class WechatsController < ApplicationController
     end
   end
 
-  on :scan, with: 'scene_id' do |request, ticket|
+  on :scan, with: 'subscribe' do |request, ticket|
     request.reply.text "Subscribe user #{request.to_json} Ticket #{ticket}"
   end
-  on :event, with: 'scan' do |request|
-
+  on :event, with: 'scan' do |request, content|
+    puts request, content
     request.reply.text "event scan got EventKey #{request.to_json}"
   end
 end

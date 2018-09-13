@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   end
 
   def subscribe_image
-    qrcode_image = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=#{Wechat.api.qrcode_create_scene(Time.now.to_i, 2592000)['ticket']}"
+    qrcode_image = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=#{Wechat.api.qrcode_create_scene(params[:id], 2592000)['ticket']}"
     render json: {image: qrcode_image}
   end
 end

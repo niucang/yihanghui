@@ -74,7 +74,7 @@ function activateModal(image) {
   mui.overlay('on', modalEl);
 }
 $('.share-button').click(function(){
-  $.get('/users/subscribe_image', function(data){
+  $.get('/users/subscribe_image', {id: <%= params[:id] %>}, function(data){
     activateModal(data.image)
   })
 })

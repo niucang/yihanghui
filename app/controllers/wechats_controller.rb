@@ -11,13 +11,12 @@ class WechatsController < ApplicationController
   on :event, with: 'subscribe' do |request, ticket|
     Rails.logger.info 'subscribe'
     Rails.logger.info request
-    Rails.logger.info ticket
-    request.reply.text "Subscribe user #{request.to_json} Ticket #{ticket}"
+    Rails.logger.info request[:EventKey]
+    request.reply.text "#{request[:EventKey]}"
   end
   on :event, with: 'scan' do |request, content|
     Rails.logger.info 'scan'
     Rails.logger.info request
-    Rails.logger.info content
     request.reply.text "event scan got EventKey #{request.to_json}"
   end
 end

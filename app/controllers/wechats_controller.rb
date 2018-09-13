@@ -9,14 +9,15 @@ class WechatsController < ApplicationController
   end
 
   on :event, with: 'subscribe' do |request, ticket|
-    Rails.logger.info 'subscribe'
-    Rails.logger.info request
-    Rails.logger.info request[:EventKey]
-    request.reply.text "#{request[:EventKey]}"
+    reply_text(request)
   end
   on :event, with: 'scan' do |request, content|
-    Rails.logger.info 'scan'
-    Rails.logger.info request
-    request.reply.text "event scan got EventKey #{request.to_json}"
+    reply_text(request)
   end
+
+  private
+    def reply_text request
+      id = request[:EventKey].match(/[0-9]+/)[0]
+      request.replay.text "<a src='#{get_coupons_gift_share_url(id)}'>点我领取！</a>"
+    end
 end

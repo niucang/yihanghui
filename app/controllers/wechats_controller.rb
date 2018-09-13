@@ -18,6 +18,6 @@ class WechatsController < ApplicationController
   private
     def reply_text request
       id = request[:EventKey].match(/[0-9]+/)[0]
-      request.reply.text "<a src=\"#{get_coupons_gift_share_url(id)}\">点我领取！</a>"
+      request.reply.text "谢谢关注！，<a src=\"#{get_coupons_gift_share_url(id)}\">点我领取！</a>"
     end
 end

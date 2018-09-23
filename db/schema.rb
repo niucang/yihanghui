@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180923130453) do
+ActiveRecord::Schema.define(version: 20180923135225) do
 
   create_table "advertisings", force: :cascade do |t|
     t.string "hyperlink"
     t.string "img_url"
     t.string "img_desc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "is_active", default: true
+  end
+
+  create_table "coupon_open_images", force: :cascade do |t|
+    t.string "img_url"
+    t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

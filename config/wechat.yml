@@ -1,6 +1,6 @@
 default: &default
-  appid: "wxf21a7f12034721c9"
-  secret: "ae9a22bf2a293ffece5f9346c0b2e033"
+  appid: "wx3d710c33ad82e8f2"
+  secret: "40f505430f60ca0e5c0159c8ac79db4f"
   token: "b333b63d985de6"
   access_token: "/var/tmp/wechat_access_token"
   jsapi_ticket: "/var/tmp/wechat_jsapi_ticket"

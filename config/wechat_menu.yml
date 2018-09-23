@@ -21,4 +21,4 @@ button:
  -
   type: "view"
   name: '我的礼包'
-  url: "http://zhizhihudong/users/gift"
+  url: "http://zhizhihudong.com/users/gift"

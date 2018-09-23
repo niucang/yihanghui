@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def gift
-    @advertisings = Advertising.all
+    @advertisings = Advertising.all.where(is_active: true)
     @gift = current_user.gift
     @coupons = @gift.coupons
   end

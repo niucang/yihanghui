@@ -4,6 +4,7 @@ class GiftSharesController < ApplicationController
   end
 
   def open
+    @images = CouponOpenImage.all.where(is_active: true)
   end
 
   def share

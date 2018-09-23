@@ -13,7 +13,17 @@
     </div>
   </div>
   <div class="body">
-    <%= image_tag 'sign_success_body.png' %>
+    <div class="swiper-container swiper-container-horizontal">
+      <div class="swiper-wrapper">
+        <% @images.each do |ad| %>
+          <div class='swiper-slide'>
+            <%= link_to ad.hyperlink do %>
+              <%= image_tag ad.img_url %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="footer">
     <div class="line fenxiang">与好友分享创业大礼包</div>
@@ -24,6 +34,17 @@
 </div>
 <div class="mask"><%= image_tag 'sharesign.png'%></div>
 <script>
+  $(function(){
+    var swiper = new Swiper('.swiper-container', {
+      direction:"horizontal",
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+    if(<%= @images.length %> == 1)
+      swiper.autoplay.stop()
+  })
 function success_callback(){
   setTimeout(function(){
     // $.get("<%= get_coupons_gift_share_url(@share_gift.id) %>", function(){

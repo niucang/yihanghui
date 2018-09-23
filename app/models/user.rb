@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_one :gift
   has_many :admin_gifts
   has_many :coupons, through: :gift
+  has_many :coupon_types, -> { distinct },  through: :coupons
   has_secure_password
 
   def gift
@@ -12,7 +13,8 @@ class User < ApplicationRecord
   def add_coupons_by_gift(gift_group)
     # raise ArgumentError, "不能打开自己的红包" if gift.user == self
     ActiveRecord::Base.transaction do
-      gift_group.coupon_types.map { |ct| ct.initial_coupon_for_user(self) }
+      agree_types = gift_group.coupon_types - coupon_types
+      agree_types.map { |ct| ct.initial_coupon_for_user(self) }
                        .each do |coupon|
                          coupon.from_id = gift_group.user_id
                          coupon.save!

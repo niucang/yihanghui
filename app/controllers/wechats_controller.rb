@@ -11,8 +11,13 @@ class WechatsController < ApplicationController
   on :event, with: 'subscribe' do |request, ticket|
     reply_text(request)
   end
+
   on :event, with: 'scan' do |request, content|
     reply_text(request)
+  end
+
+  on :click, with: 'contack_us' do |request, content|
+    request.reply.text '请加客服微信：Ciicho2012(请说明添加原因）'
   end
 
   private

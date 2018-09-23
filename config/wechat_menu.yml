@@ -1,0 +1,24 @@
+# More option see https://github.com/Eric-Guo/wechat#menu-create
+button:
+ -
+  name: '在线咨询'
+  sub_button:
+    -
+      type: "click"
+      name: "联系我们"
+      key: "contack_us"
+    -
+      type: "media_id"
+      name: "一行会"
+      media_id: "KuKduzC1fbRvkAW7WZqICKvSitShVZXaoQxRHMMrSNg"
+ -
+  name: '加盟预约'
+  sub_button:
+    -
+      type: "view"
+      name: "在线预约"
+      url: "http://cn.mikecrm.com/nl56K5O"
+ -
+  type: "view"
+  name: '我的礼包'
+  url: "http://zhizhihudong/users/gift"

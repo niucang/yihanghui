@@ -13,7 +13,7 @@ class User < ApplicationRecord
   def add_coupons_by_gift(gift_group)
     # raise ArgumentError, "不能打开自己的红包" if gift.user == self
     ActiveRecord::Base.transaction do
-      agree_types = gift_group.coupon_types.uniq - coupon_types
+      agree_types = (gift_group.coupon_types.uniq - coupon_types).first
       agree_types = agree_types.present? ? [agree_types] : []
       agree_types.map { |ct| ct.initial_coupon_for_user(self) }
                        .each do |coupon|

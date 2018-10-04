@@ -14,7 +14,7 @@ class User < ApplicationRecord
     # raise ArgumentError, "不能打开自己的红包" if gift.user == self
     ActiveRecord::Base.transaction do
       agree_types = (gift_group.coupon_types.uniq - coupon_types).first
-      agree_types.map { |ct| ct.initial_coupon_for_user(self) }
+      [agree_types].map { |ct| ct.initial_coupon_for_user(self) }
                        .each do |coupon|
                          coupon.from_id = gift_group.user_id
                          coupon.save!

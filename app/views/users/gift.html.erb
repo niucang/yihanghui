@@ -141,6 +141,7 @@
   function success_callback(){
     $.get("<%= share_gift_share_url(@gift.id) %>", function(){
       $('.mask').hide().delay(500)
+      window.location.reload();
     })
   }
   $('.share-button').click(function(){

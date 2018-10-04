@@ -5,20 +5,32 @@ button:
   sub_button:
     -
       type: "click"
-      name: "联系我们"
+      name: "商务合作"
       key: "contack_us"
+    -
+      type: "view"
+      name: "加盟预约"
+      url: "http://cn.mikecrm.com/nl56K5O"
     -
       type: "media_id"
       name: "一行会"
-      media_id: "KuKduzC1fbRvkAW7WZqICKvSitShVZXaoQxRHMMrSNg"
+      media_id: "KuKduzC1fbRvkAW7WZqICFITZAn5Tv8GnxMjaUT6nzQ"
  -
-  name: '加盟预约'
+  name: '我要发券'
   sub_button:
     -
       type: "view"
-      name: "在线预约"
-      url: "http://cn.mikecrm.com/nl56K5O"
+      name: "发券申请"
+      url: "http://cn.mikecrm.com/i4NvTEJ"
  -
-  type: "view"
   name: '我的礼包'
-  url: "http://zhizhihudong.com/users/gift"
+  sub_button:
+    -
+      type: 'view'
+      name: '我的大礼包'
+      url: "http://zhizhihudong.com/users/gift"
+    -
+      type: 'media_id'
+      name: '优惠券使用'
+      media_id: 'KuKduzC1fbRvkAW7WZqICMBPHwIgBmdTnLvAjGzGJK8'
+

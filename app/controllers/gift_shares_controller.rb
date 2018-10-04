@@ -8,6 +8,7 @@ class GiftSharesController < ApplicationController
   end
 
   def share
+    current_user.add_one_coupon
     @share_gift.update!(shared_at: Time.now)
     render json: {message: 'ok'}
   end

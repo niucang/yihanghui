@@ -23,6 +23,6 @@ class WechatsController < ApplicationController
   private
     def reply_text request
       id = request[:EventKey].match(/[0-9]+/)[0]
-      request.reply.text "谢谢关注！，<a href=\"#{get_coupons_gift_share_url(id)}\">点我领取！</a>\n 只之温馨提醒：每分享一次创业大礼包，系统将自动给您推送一张新的优惠券！"
+      request.reply.text "谢谢关注！，<a href=\"#{get_coupons_gift_share_url(id)}\">点我领取！</a>\n只之温馨提醒：每分享一次创业大礼包，系统将自动给您推送一张新的优惠券！"
     end
 end

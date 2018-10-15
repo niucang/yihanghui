@@ -45,4 +45,11 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'CouponType' do
+    field :title
+    field :desc
+    field :link
+    field :img, :active_storage
+  end
 end

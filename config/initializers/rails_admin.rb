@@ -29,6 +29,7 @@ RailsAdmin.config do |config|
       @current_admin_user = user
     end
   end
+  config.excluded_models = ['ActiveStorage::Blob', 'ActiveStorage::Attachment']
 
   config.actions do
     dashboard                     # mandatory

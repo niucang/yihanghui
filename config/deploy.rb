@@ -27,7 +27,7 @@ set :term_mode, :system
 # run `mina -d` to see all folders and files already included in `shared_dirs` and `shared_files`
 # set :shared_dirs, fetch(:shared_dirs, []).push('public/assets')
 # set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
-set :shared_dirs, fetch(:shared_dirs, []).push('log', 'public/uploads', 'node_modules')
+set :shared_dirs, fetch(:shared_dirs, []).push('log', 'public/uploads', 'node_modules', 'storage')
 set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml', 'config/wechat.yml')
 set :puma_config, ->{ "#{fetch(:current_path)}/config/.puma-server.rb" }
 
@@ -59,6 +59,9 @@ task :setup do
 
   command %[mkdir -p "#{fetch(:shared_path)}/config"]
   command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/config"]
+
+  command %[mkdir -p "#{fetch(:shared_path)}/storage"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/storage"]
 
   command %[touch "#{fetch(:shared_path)}/config/wechat.yml"]
   command %[echo "-----> Be sure to edit '#{fetch(:shared_path)}/config/wechat.yml'"]

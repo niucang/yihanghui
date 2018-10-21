@@ -38,7 +38,7 @@
         <div class="left-circle">
           <div class="circle"></div>
         </div>
-        <div class="coupon">
+        <div class="coupon" data-img="<%= cp.coupon_type.img.attached? ? url_for(cp.coupon_type.img) : ''%>" data-link="<%= cp.coupon_type.link.presence%>" >
           <div class="content">
             <div class="divider top"></div>
             <div class="center">
@@ -85,9 +85,14 @@
   </div>
 
 </div>
-<div class="mask">
+<div class="tip mask">
   <%= image_tag 'sharesign.png'%>
-  <%= image_tag 'lock.png', style: "margin-right:7%; width: 80%;"%>      
+  <%= image_tag 'lock.png', style: "margin-right:7%; width: 80%;"%>
+</div>
+<div class="coupon-img mask">
+  <a>
+    <img src="" alt="">
+  </a>
 </div>
 <style media="screen">
   .modal {
@@ -131,21 +136,31 @@
         if(data.is_share){
           clearInterval(interval)
         }else{
-          if($('.mask').is(":visible"))
+          if($('.tip.mask').is(":visible"))
             return
-          $('.mask').show().delay(500)
+          $('.tip.mask').show().delay(500)
         }
       })
     }, 5000)
   })
   function success_callback(){
     $.get("<%= share_gift_share_url(@gift.id) %>", function(){
-      $('.mask').hide().delay(500)
+      $('.tip.mask').hide().delay(500)
       window.location.reload();
     })
   }
   $('.share-button').click(function(){
-    $('.mask').show().delay(500)
+    $('.tip.mask').show().delay(500)
+  })
+  $(".coupon").click(function(e){
+    img_path = $(this).data("img")
+    if(img_path){
+      $(".coupon-img img").attr("src", img_path)
+      link = $(this).data("link")
+      $(".coupon-img.mask").show()
+      if(link)
+        $(".coupon-img a").attr('href', link)
+    }
   })
   wx.ready(function() {
       wx.onMenuShareTimeline({

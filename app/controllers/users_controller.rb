@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def gift
     @advertisings = Advertising.all.where(is_active: true)
     @gift = current_user.gift
-    @coupons = @gift.coupons
+    @coupons = @gift.coupons.includes(:coupon_type)
   end
 
   def register

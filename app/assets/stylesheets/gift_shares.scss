@@ -106,7 +106,6 @@
   }
 }
 .card {
-  background-color: rgb(214, 214, 212);
   margin: 5px 0;
   height: 125px;
   padding: 12px 29px;
@@ -116,7 +115,7 @@
     height: 100%;
     width: 21%;
     float: left;
-    background-color: rgb(24, 20, 18);
+    background-color: #b7b7b3;
     .circle {
       position: relative;
       width: 100%;
@@ -125,7 +124,7 @@
       height: 60%;
       border-top-right-radius: 50px;
       border-bottom-right-radius: 50px;
-      background-color: #d6d6d4;
+      background-color: #f1f1f1;
     }
   }
 }
@@ -153,14 +152,14 @@
       margin: 10px 0;
     }
     .divider.top {
-      width: 106%;
+      width: 114%;
     }
     .divider.bottom {
       bottom: 0px;
       position: absolute;
     }
     .content {
-      color: white;
+      color: #ff5b5b;
       margin-left: 9px;
       margin-right: 45px;
       height: 80%;
@@ -174,34 +173,34 @@
           border: 2px solid;
           border-radius: 55px;
           text-align: center;
-          margin: 31px 0;
+          margin: 24px 0;
         }
         .right {
           height: 80%;
           text-align: center;
           .desc {
             font-size: 18px;
-            margin-top: 5px;
+            margin-top: 19px;
           }
           .price {
-            font-size: 25px;
+            font-size: 18px;
             margin-top: 15px;
           }
         }
       }
 
       .right {
-        color: rgb(207, 14, 23);
+        color: #ffffff;
       }
     }
 }
 .coupon {
-  background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 5px, rgb(24, 20, 18) 5px);
+  background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 5px, #b7b7b3 5px);
   background-size: 15px 15px;
   background-position: 9px 3px;
   z-index: 0;
   &:before {
-    background-color: rgb(24, 20, 18);
+    background-color: #b7b7b3;
     content: '';
     position: absolute;
     top: 0;
@@ -427,7 +426,7 @@
   img {
     width: 81%;
     margin-right: 9%;
-    margin-top: 5%;
+    margin-top: 10%;
   }
 }
 .coupons {

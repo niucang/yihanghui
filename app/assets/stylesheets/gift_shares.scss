@@ -424,6 +424,14 @@
     vertical-align: baseline;
   }
 }
+.coupon-img.mask {
+  padding-right: 0px;
+  img {
+    width: 81%;
+    margin-right: 9%;
+    margin-top: 5%;
+  }
+}
 .coupons {
   max-height: 400px;
   overflow-y: auto;

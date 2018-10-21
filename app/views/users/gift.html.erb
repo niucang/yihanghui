@@ -162,6 +162,10 @@
         $(".coupon-img a").attr('href', link)
     }
   })
+  $('.mask').click(function(e){
+    if($(e.target).hasClass('mask'))
+    $('.coupon-img.mask').hide();
+  })
   wx.ready(function() {
       wx.onMenuShareTimeline({
         title: "<%= @current_user.name %>给你送了一个创业大礼包!",

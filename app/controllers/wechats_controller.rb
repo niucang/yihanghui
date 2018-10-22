@@ -22,7 +22,7 @@ class WechatsController < ApplicationController
 
   private
     def reply_text request
-      dump_json = JSON.parse request
+      dump_json = JSON.parse request[:EventKey]
       if dump_json.is_a? Hash
         url = get_coupons_gift_share_url(dump_json["spec"])
       else

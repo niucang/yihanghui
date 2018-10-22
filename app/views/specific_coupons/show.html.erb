@@ -1,0 +1,36 @@
+<div class="gift_share container">
+  <div class="hongbao">
+    <div class="avatar">
+      <%= image_tag 'zhizhihudong.jpeg', class: "img-circle mb-2" %>
+    </div>
+    <div class="user-name mb-4">
+      <%= '只之互动' %>
+    </div>
+    <div class="text">给您发来了一个大礼包</div>
+    <%= link_to '#' do %>
+    <div class="open-hongbao" id='chai-hongbao'>
+      <div class="kai">開</div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var oChai = document.getElementById("chai-hongbao");
+
+    oChai.onclick = function (e){
+        e.preventDefault()
+        $(oChai).addClass('rotate')
+        setTimeout(function(){
+          current_href = location.href.split('/')
+          current_id = current_href[current_href.length - 1]
+          window.location.href = "<%= open_specific_coupon_path(@coupon.id) %>"
+        }, 300)
+    }
+  });
+</script>
+<style>
+  .footer {
+    display: none;
+  }
+</style>

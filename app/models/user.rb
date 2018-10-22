@@ -33,6 +33,13 @@ class User < ApplicationRecord
     coupon.save!
   end
 
+  # 获得特定优惠券
+  def add_coupon!(coupon)
+    left_type = ([coupon.coupon_type] - coupon_types).last
+    cur_coupon = left_type&.initial_coupon_for_user(self)
+    cur_coupon.save!
+  end
+
   def create_admin_gift(coupon_types)
     raise User::AuthError.new unless self.admin?
     ActiveRecord::Base.transaction do

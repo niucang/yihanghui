@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="title mb-2">
+    <div class="line tl">恭喜你获得</div>
+    <div class="line tl mb-1">来自“一行会·创”的创业大礼包</div>
+    <div class="images">
+      <!-- <div class="top">
+        <%= image_tag 'yihanghui.png' %>
+      </div> -->
+      <div class="bottom">
+        <%= image_tag 'chuang.png', class: 'mr-4 left' %>
+        <%= image_tag 'chuang_bag.png', class: 'right' %>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="swiper-container swiper-container-horizontal">
+      <div class="swiper-wrapper">
+        <% @images.each do |ad| %>
+          <div class='swiper-slide'>
+            <%= link_to ad.hyperlink do %>
+              <%= image_tag ad.img_url %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="line fenxiang">与好友分享创业大礼包</div>
+    <%= button_tag '一键获取', class: 'btn btn-info btn-block mb-2 share-button' %>
+    <!-- <div class="line last">发至朋友圈或微信群</div>
+    <div class="line tip">还差一步 先分享吧</div> -->
+  </div>
+</div>
+<div class="mask"><%= image_tag 'sharesign.png'%></div>
+<script>
+  $(function(){
+    var swiper = new Swiper('.swiper-container', {
+      direction:"horizontal",
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+    if(<%= @images.length %> == 1)
+      swiper.autoplay.stop()
+  })
+function success_callback(){
+  setTimeout(function(){
+  }, 200)
+}
+// $('.share-button').click(function(){
+//   $('.mask').show().delay(500)
+// })
+wx.ready(function() {
+    wx.onMenuShareTimeline({
+      title: "<%= @current_user.name %>给你送了一个创业大礼包!",
+      desc: "上海地区3年免费办公场地推荐",
+      link: "<%= specific_coupon_url(@coupon.id) %>",
+      imgUrl: 'http://cdn.puhuishequ.cn/photo/2018/64b97423-cd47-413e-8c76-fbb24ce439fa.png?imageView2/1/w/1920',
+      success: success_callback
+    });
+    wx.onMenuShareAppMessage({
+      title: "<%= @current_user.name %>给你送了一个创业大礼包", // 分享标题
+      desc: '上海地区3年免费办公场地推荐', // 分享描述
+      link: "<%= specific_coupon_url(@coupon.id) %>", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+      imgUrl: 'http://cdn.puhuishequ.cn/photo/2018/64b97423-cd47-413e-8c76-fbb24ce439fa.png?imageView2/1/w/1920', // 分享图标
+      success: success_callback
+  });
+});
+function activateModal(image) {
+  // initialize modal element
+  var modalEl = document.createElement('div');
+  modalEl.classList = "modal"
+  modalEl.style.width = '84%';
+  modalEl.style.margin = '7% auto';
+  modalEl.style.backgroundColor = '#fff';
+  // $(modalEl).append('<p>快关注公众号后使用优惠券吧^_^</p><img src=' + image + '>')
+  $(modalEl).append('<div class="modal-body">\
+    <img src="/qrcode_desc.png" class="desc">\
+    <img src="' + image + ' " class="qrcode">\
+    <div class="modal-footer">\
+      <img src="/wechat_icon.png">\
+      <img src="/weibo_icon.png">\
+      <img src="/qq_icon.png">\
+      <img src="/fackbook_icon.png">\
+    <div>\
+  </div>')
+
+  // show modal
+  mui.overlay('on', modalEl);
+}
+$('.share-button').click(function(){
+  $.get('/specific_coupons/subscribe_image', {id: <%= params[:id] %>}, function(data){
+    activateModal(data.image)
+  })
+})
+
+</script>
+<style media="screen">
+  .modal {
+    display: block;
+    border: 10px solid black;
+    padding: 10px;
+  }
+  .modal img {
+    width: 100%;
+  }
+  .modal-footer img {
+    display: inline-block;
+    width: 17%;
+    margin-left: 7%!important;
+    margin-right: 1%!important;
+  }
+  .modal-footer {
+    position: absolute;
+    bottom: 1rem;
+    padding-left: 0px;
+    border-top: 0px;
+  }
+  .modal-body {
+    height: 100%;
+    border: 1px solid black;
+  }
+  .modal-body .desc {
+    padding: 2rem 1rem;
+  }
+  .modal-body .qrcode {
+    padding: 0 7%;
+    padding-top: 1%;
+  }
+</style>

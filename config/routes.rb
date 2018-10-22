@@ -12,6 +12,16 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :specific_coupons, only: [:show] do
+    member do
+      get :open
+      get :get_coupon
+    end
+    collection do
+      get :subscribe_image
+    end
+  end
+
   resources :users, only: [:update] do
     collection do
       get :auth_user

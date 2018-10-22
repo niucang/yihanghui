@@ -37,7 +37,7 @@ class User < ApplicationRecord
   def add_coupon!(coupon)
     left_type = ([coupon.coupon_type] - coupon_types).last
     cur_coupon = left_type&.initial_coupon_for_user(self)
-    cur_coupon.save!
+    cur_coupon&.save!
   end
 
   def create_admin_gift(coupon_types)

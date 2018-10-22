@@ -8,7 +8,7 @@ class SpecificCouponsController < ApplicationController
   end
 
   def get_coupon
-    current_user.add_coupon!(@coupon)
+    current_user.add_coupon!(@coupon_type)
     redirect_to gift_users_path
   end
 
@@ -18,6 +18,6 @@ class SpecificCouponsController < ApplicationController
   end
   private
     def set_coupon
-      @coupon ||= Coupon.find(params[:id])
+      @coupon_type ||= CouponType.find(params[:id])
     end
 end

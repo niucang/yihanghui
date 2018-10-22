@@ -34,8 +34,8 @@ class User < ApplicationRecord
   end
 
   # 获得特定优惠券
-  def add_coupon!(coupon)
-    left_type = ([coupon.coupon_type] - coupon_types).last
+  def add_coupon!(coupon_type)
+    left_type = ([coupon_type] - coupon_types).last
     cur_coupon = left_type&.initial_coupon_for_user(self)
     cur_coupon&.save!
   end

@@ -9,7 +9,7 @@ class SpecificCouponsController < ApplicationController
 
   def get_coupon
     current_user.add_coupon!(@coupon)
-    redirect_to gift_users_paths
+    redirect_to gift_users_path
   end
 
   def subscribe_image

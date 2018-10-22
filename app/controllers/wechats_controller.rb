@@ -25,7 +25,7 @@ class WechatsController < ApplicationController
       dump_json = JSON.parse request[:EventKey]
       Rails.logger.info("WECHAT/CALLBACK: EVENT: #{dump_json}")
       if dump_json.is_a? Hash
-        url = get_coupons_gift_share_url(dump_json["spec"])
+        url = get_coupon_specific_coupon_url(dump_json["spec"])
       else
         url = get_coupons_gift_share_url(dump_json)
       end

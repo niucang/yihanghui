@@ -52,5 +52,11 @@ RailsAdmin.config do |config|
     field :desc
     field :link
     field :img, :active_storage
+
+    field :share_url
+
+    configure :share_url do
+      read_only true
+    end
   end
 end

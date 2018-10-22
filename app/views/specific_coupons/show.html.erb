@@ -24,7 +24,7 @@
         setTimeout(function(){
           current_href = location.href.split('/')
           current_id = current_href[current_href.length - 1]
-          window.location.href = "<%= open_specific_coupon_path(@coupon.id) %>"
+          window.location.href = "<%= open_specific_coupon_path(@coupon_type.id) %>"
         }, 300)
     }
   });

@@ -24,7 +24,7 @@
       <% @advertisings.each do |ad| %>
         <div class='swiper-slide'>
           <%= link_to ad.hyperlink do %>
-            <%= image_tag ad.img_url %>
+            <%= image_tag url_for(ad.img) %>
           <% end %>
         </div>
       <% end %>

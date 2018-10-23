@@ -59,4 +59,11 @@ RailsAdmin.config do |config|
       read_only true
     end
   end
+
+  config.model 'Advertising' do
+    field :img, :active_storage
+    field :hyperlink
+    field :img_desc
+    field :is_active
+  end
 end

@@ -7,6 +7,6 @@ class CouponType < ApplicationRecord
   end
 
   def share_url
-    Rails.application.routes.url_helpers.specific_coupon_url(id, host: "http://zhizhihudong.com")
+    Rails.application.routes.url_helpers.specific_coupon_url(id, host: "http://zhizhihudong.com") if id.present?
   end
 end
